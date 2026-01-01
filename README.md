@@ -1,1 +1,4 @@
-# CineQuery is an react application with firebase backend which suggests you latest movies and also allows you to find movies according to your mood using LLM models
+# CineQuery
+
+A React application powered by Firebase and LLM models that discovers movies tailored to your mood and preferences.
+
