@@ -5,8 +5,32 @@ import {signInWithEmailAndPassword, createUserWithEmailAndPassword} from "fireba
 import { auth } from "../utils/firebase";
 import { updateProfile } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { Fluid } from '@whatisjery/react-fluid-distortion';
+import { EffectComposer } from '@react-three/postprocessing';
+import { Canvas, useLoader, useThree } from "@react-three/fiber"; 
+import { TextureLoader } from "three"; 
+import { useMemo } from "react";
 
+function Background() {
+  const texture = useLoader(TextureLoader, "/images/bg-image2.png");
+  const { camera, size } = useThree();
 
+  const scale = useMemo(() => {
+    const distance = Math.abs(camera.position.z); // assuming plane at z = 0
+    const vFov = (camera.fov * Math.PI) / 180;
+    const height = 2 * Math.tan(vFov / 2) * distance;
+    const width = height * (size.width / size.height);
+
+    return [width, height, 1];
+  }, [camera, size]);
+
+  return (
+    <mesh position={[0, 0, 0]} scale={scale}>
+      <planeGeometry args={[1, 1]} />
+      <meshBasicMaterial map={texture} />
+    </mesh>
+  );
+}
 
 const Login = () => {
 
@@ -98,13 +122,13 @@ signInWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.val
 
   return (
     <div
-      className="login w-screen h-screen flex justify-center items-center bg-[url(images/bg-image.png)] bg-cover bg-center text-black"
+      className="login w-screen bg-[url(images/bg-image.png)] h-screen flex justify-center items-center bg-cover bg-center text-black"
 
     >
 
       <Header/>
 
-    <div className="login-container backdrop-blur-md p-10! flex gap-10 flex-col text-white bg-[#000000bf] w-[80%] sm:w-[25%] rounded-lg h-auto">
+    <div className="z-50 login-container backdrop-blur-md  p-10! flex gap-10 flex-col text-white bg-[#000000bf] w-[80%] sm:w-[25%] rounded-lg h-auto">
 
   <h1 className="text-5xl font-bold">{isLogin?"Login":"Register"}</h1>
 
@@ -167,6 +191,27 @@ className={`${showPassword? "ri-eye-off-line":"ri-eye-line"} text-2xl absolute r
 
   </div>
 </div>
+
+
+    <Canvas style={{ position: "fixed", inset: 0, zIndex: 10 }}>
+        <Background />
+        <EffectComposer>
+<Fluid
+  strength={0.9}        
+  radius={0.18}         
+  rainbow={true}
+  showBackground={true}
+  blend={2}             
+  intensity={0.8}        
+  force={0.9}            
+  distortion={1.2}      
+  swirl={4}            
+  densityDissipation={0.85} 
+/>
+
+
+        </EffectComposer>
+      </Canvas>
 
     </div>
   )

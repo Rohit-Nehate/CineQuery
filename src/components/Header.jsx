@@ -45,7 +45,7 @@ useEffect(()=>{
 
 <>
 
-<div className="absolute bg-gradient-to-b flex p-10! items-center justify-between from-black h-15 w-full top-0 left-0">
+<div className="z-60 absolute bg-gradient-to-b flex p-10! items-center justify-between from-black h-15 w-full top-0 left-0">
 <img src="/images/logo.png" alt="logo" className='w-60 '/>
 
 {user &&<div className='flex justify-between gap-5 items-center'> <span className=' text-[#dadfff]'>  <i className="ri-user-2-fill text-[#dadfff] text-3xl"></i> {user.displayName}</span>
