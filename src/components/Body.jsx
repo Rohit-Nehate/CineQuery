@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { RouterProvider } from 'react-router-dom'
 import { createBrowserRouter } from 'react-router-dom'
 import Login from './Login.jsx'
@@ -6,6 +6,7 @@ import Browse from './Browse.jsx'
 
 
 const Body = () => {
+
 
   
    //creeate routers
