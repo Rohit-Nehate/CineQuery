@@ -1,5 +1,41 @@
 @import "tailwindcss";
 
+@layer utilities {
+  .no-scrollbar {
+    -ms-overflow-style: none; 
+    scrollbar-width: none;     
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;            
+  }
+
+  .scrollbar-thin-light {
+    scrollbar-width: thin;               
+    scrollbar-color: #7dd3fc transparent; 
+  }
+
+  .scrollbar-thin-light::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .scrollbar-thin-light::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin-light::-webkit-scrollbar-thumb {
+    background-color: #7dd3fc;
+    border-radius: 999px;
+  }
+
+  .scrollbar-thin-light::-webkit-scrollbar-thumb:hover {
+    background-color: #38bdf8; 
+  }
+}
+
+
+
 *{
     margin: 0;
     padding: 0;
@@ -12,4 +48,7 @@
   width: 100%;
   height: 100%;
   background: #000;
+overflow-x: hidden;
 }
+
+

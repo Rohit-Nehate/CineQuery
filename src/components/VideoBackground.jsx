@@ -7,7 +7,7 @@ const VideoBackground = ({movieId}) => {
   const trailer = useSelector((store) => store.movies?.movieTrailer);
 
 useMovieTrailer(movieId);
-
+//  console.log(movieId)
 
   return (
     <div className='absolute inset-0 overflow-hidden'>
