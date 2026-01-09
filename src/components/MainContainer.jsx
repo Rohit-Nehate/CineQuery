@@ -1,20 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import VideoBackground from './VideoBackground';
-import VideoTitle from './VideoTitle';
-import MoviesContainer from './MoviesContainer';
-const MainContainer = () => {
+import VideoBackground from './VideoBackground'
+import VideoTitle from './VideoTitle'
 
-    const movies = useSelector((store) => store.movies?.popularMovies);
-    if(!movies) return null;
-    const randomMovieIndex = Math.floor(Math.random() * movies.length);
-    const randomMovie = movies[randomMovieIndex];
-// console.log(randomMovie)
+const MainContainer = ({ type }) => {
+
+  const data = useSelector(store => store.movies)
+
+  const movies = data?.popularMovies || []
+  const shows = data?.onTheAirShows || []
+
+  const [selectedItem, setSelectedItem] = useState(null)
+
+  useEffect(() => {
+    if (type === 'movie' && movies.length > 0) {
+      setSelectedItem(movies[5])
+    } else if (type !== 'movie' && shows.length > 0) {
+      setSelectedItem(shows[5])
+    }
+  }, [type, movies, shows])
+
+  if (!selectedItem) return null
+
   return (
-    <div className=' relative w-full h-screen overflow-hidden z-0'>
-        <VideoTitle Movie={randomMovie}/>
-        <VideoBackground movieId={randomMovie.id}/>
-        
+    <div className='relative w-full h-screen overflow-hidden z-0'>
+      <VideoTitle Movie={selectedItem} />
+      <VideoBackground
+        type={type}
+        movieId={selectedItem.id}
+      />
     </div>
   )
 }

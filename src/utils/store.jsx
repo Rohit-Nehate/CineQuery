@@ -8,4 +8,6 @@ const store = configureStore({
     },
 });
 
+window.__store = window.__store || store;
+
 export default store;

@@ -9,7 +9,7 @@ import { addUser, removeUser } from '../utils/slices';
 const Header = () => {
 const dispatch = useDispatch();
 const navigate = useNavigate();
-const user = useSelector((store)=>store.userSlice);
+const user = useSelector((store)=>store.userSlice.user);
 
 
 const handleLogout = ()=>{
@@ -26,18 +26,20 @@ dispatch(removeUser())
 useEffect(()=>{
 
  
- onAuthStateChanged(auth, (user) => {
+ const unsub = onAuthStateChanged(auth, (user) => {
    if (user) {
      const {uid, displayName, email} = user;
  
      dispatch(addUser({uid: uid, displayName: displayName, email: email}));
-    navigate('/browse');
+
  
    } else {
      dispatch(removeUser());
      navigate('/');
    }
  });
+
+ return unsub;
 },[])
 
   return (

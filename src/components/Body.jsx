@@ -1,32 +1,46 @@
-import React, { useEffect } from 'react'
-import { RouterProvider } from 'react-router-dom'
-import { createBrowserRouter } from 'react-router-dom'
+import React from 'react'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Login from './Login.jsx'
 import Browse from './Browse.jsx'
-
+import PublicRoute from '../utils/PublicRoute.jsx'
+import TvShows from './TvShows.jsx'
+import BrowserLayout from './BrowserLayout.jsx'
+import MovieCard from './MovieCard.jsx'
+import ContentInfo from './ContentInfo.jsx'
 
 const Body = () => {
 
+  const appRouter = createBrowserRouter([
+    {
+      path: '/', 
+      element: (
+        <PublicRoute>
+          <Login />
+        </PublicRoute>
+      )
+    }, 
+    {
+      path: '/browse', 
+      element: <BrowserLayout />,
+      children: [
+        {
+          index: true,       
+          element: <Browse />
+        }, 
+        {
+          path: 'shows', 
+          element: <TvShows />
+        }, 
+       
+      ]
+    },
+     {
+          path: 'moreinfo/:seriesCode',
+          element: <ContentInfo />
+        }
+  ])
 
-  
-   //creeate routers
-    const appRouter = createBrowserRouter([
-      {
-        path: '/', 
-        element: <Login/>
-      }, 
-      {
-        path: '/browse', 
-        element: <Browse/>
-      }, 
-    ])
-  
-
-
-
-  return (
-   <RouterProvider router={appRouter}/>
-  )
+  return <RouterProvider router={appRouter} />
 }
 
 export default Body
