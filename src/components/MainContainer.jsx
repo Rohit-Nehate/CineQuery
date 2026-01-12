@@ -8,15 +8,15 @@ const MainContainer = ({ type }) => {
   const data = useSelector(store => store.movies)
 
   const movies = data?.popularMovies || []
-  const shows = data?.onTheAirShows || []
+  const shows = data?.airingToday || []
 
   const [selectedItem, setSelectedItem] = useState(null)
 
   useEffect(() => {
     if (type === 'movie' && movies.length > 0) {
-      setSelectedItem(movies[5])
+      setSelectedItem(movies[Math.floor(Math.random()*movies.length)])
     } else if (type !== 'movie' && shows.length > 0) {
-      setSelectedItem(shows[5])
+      setSelectedItem(shows[Math.floor(Math.random()*shows.length)])
     }
   }, [type, movies, shows])
 
