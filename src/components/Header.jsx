@@ -4,12 +4,18 @@ import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../utils/firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser, removeUser } from '../utils/slices';
+import { getWatchlist } from '../hooks/useWatchList';
+import { setWatchlist } from '../utils/moviesSlice';
 
 
 const Header = () => {
 const dispatch = useDispatch();
 const navigate = useNavigate();
 const user = useSelector((store)=>store.userSlice.user);
+
+
+
+
 
 
 const handleLogout = ()=>{
@@ -31,6 +37,8 @@ useEffect(()=>{
      const {uid, displayName, email} = user;
  
      dispatch(addUser({uid: uid, displayName: displayName, email: email}));
+    getWatchlist(dispatch);
+   
 
  
    } else {

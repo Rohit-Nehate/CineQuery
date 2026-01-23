@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import { TMDB_OPTIONS } from "../utils/constants";
 import { useDispatch } from "react-redux";
-import { setMovieTrailer } from "../utils/moviesSlice";
+import { resetMovieTrailer, setMovieTrailer } from "../utils/moviesSlice";
 
 
  const useMovieTrailer = (movieId, type) => {
 
 const dispatch = useDispatch()
+
 
 
 
@@ -24,9 +25,11 @@ const fetchTrailer = async () => {
   }
 
 useEffect(()=>{
+  dispatch(resetMovieTrailer())
 fetchTrailer();
+// console.log("trailer called")
 
-}, []) 
+}, [movieId, type, dispatch]) 
  }
 
  export default useMovieTrailer;

@@ -13,7 +13,10 @@ const moviesSlice = createSlice({
         onTheAirShows: null,
         airingToday: null,
         topRatedShows: null,
-        similarContent: null
+        similarContent: null,
+        watchlist: null,
+        trailerPlaying: false,
+
     },
 
     reducers: {
@@ -22,6 +25,9 @@ const moviesSlice = createSlice({
         },
         setMovieTrailer: (state, action) => {
             state.movieTrailer = action.payload;
+        },
+         resetMovieTrailer: (state, action) => {
+            state.movieTrailer = null;
         },
         setPopularMovies: (state, action)=>{
             state.popularMovies = action.payload
@@ -47,11 +53,20 @@ const moviesSlice = createSlice({
         setSimilarContent: (state, action)=>{
             state.similarContent = action.payload
         },
+        resetSimilarContent: (state, action)=>{
+            state.similarContent = null
+        },
+        setWatchlist: (state, action)=>{
+            state.watchlist = action.payload
+        },
+        toggleTrailerplaying:(state)=>{
+            state.trailerPlaying = !state.trailerPlaying
+        }
     }
 
 
   })
 
 
-  export const { setPlayingNowMovies, setMovieTrailer, setPopularMovies, setTopRated, setUpcomingMovies, setPopularShows, setOnTheAirShows, setAiringToday,setTopRatedShows, setSimilarContent} = moviesSlice.actions;
+  export const { setPlayingNowMovies, setMovieTrailer, setPopularMovies, setTopRated, setUpcomingMovies, setPopularShows, setOnTheAirShows, setAiringToday,setTopRatedShows, setSimilarContent, toggleTrailerplaying, resetMovieTrailer, setWatchlist,resetSimilarContent } = moviesSlice.actions;
   export default moviesSlice.reducer;

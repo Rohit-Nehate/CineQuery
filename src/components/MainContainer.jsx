@@ -5,10 +5,12 @@ import VideoTitle from './VideoTitle'
 
 const MainContainer = ({ type }) => {
 
+  
+
   const data = useSelector(store => store.movies)
 
   const movies = data?.popularMovies || []
-  const shows = data?.airingToday || []
+  const shows = data?.onTheAirShows || []
 
   const [selectedItem, setSelectedItem] = useState(null)
 
