@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const myslice = createSlice({
     name: "user",
     initialState: {
-        user: null, 
+        user: null,
+        showProfile: false,
     },
     reducers: {
         addUser: (state, action) => {
@@ -16,9 +17,11 @@ const myslice = createSlice({
             state.user = null;
           
         },
+        toggleShowProfile: (state)=>{
+            state.showProfile = !state.showProfile;
+        }
     }
 })
 
-export const { addUser, removeUser } = myslice.actions;
-
+export const { addUser, removeUser, toggleShowProfile } = myslice.actions;
 export default myslice.reducer;

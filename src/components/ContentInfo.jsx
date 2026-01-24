@@ -10,6 +10,7 @@ import useMovieTrailer from '../hooks/useMovieTrailer'
 import TrailerPlayer from './TrailerPlayer'
 import { toggleTrailerplaying } from '../utils/moviesSlice'
 import { addToWatchlist, getWatchlist, removeFromWatchlist } from '../hooks/useWatchList'
+import toast, {Toaster} from 'react-hot-toast'
 
 const ContentInfo = () => {
 
@@ -65,12 +66,16 @@ dispatch(toggleTrailerplaying())
   const handleWatchlist = async ()=>{
     if(inList){await removeFromWatchlist(id) 
       getWatchlist(dispatch);
+    toast.error("Removed from Watchlist")
       return
     }
     addToWatchlist(movie, type)
       getWatchlist(dispatch);
+      toast.success("Added to Watchlist")
   }
 
+
+  //toast notifications
 
 
 
@@ -86,6 +91,7 @@ dispatch(toggleTrailerplaying())
 {trailerPlaying&&<TrailerPlayer/>}
 
     <div className='relative'>
+    <Toaster position="top-right" />
         <Header/>
         <img className='  w-screen h-screen overflow-hidden' src={backdrop_path?BASE_URL+backdrop_path:"/images/bg-image.png"} alt="" />
         <div className="info w-screen h-screen absolute top-0 left-0  bg-gradient-to-r from-[#010626e7] to-[#01030f4c]">
@@ -98,13 +104,15 @@ dispatch(toggleTrailerplaying())
 <h1 className='font-sans! text-4xl font-bold text-white drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]'>{title||name}</h1>
 <p className='mt-5! font-light!'>{release_date||first_air_date?formatDate(release_date||first_air_date):"Release date Not Found"} ▪ <i>{getGenreNames(genre_ids).join(", ")}</i></p>
 <span className='flex gap-5 items-center'>
-  <p className=' my-5!'>⭐ <b className='text-xl'>{Math.round(vote_average)}</b>/10 <i>({vote_count} Votes)</i></p> <i title='add to watchlist' onClick={handleWatchlist} className={`${inList?'ri-bookmark-fill':'ri-bookmark-line'} px-3! py-2! cursor-pointer rounded-full ${inList?'bg-[#ffe100]':'bg-[#838383]'} text-2xl font-light`}></i></span> 
+  <p className=' my-5!'>⭐ <b className='text-xl'>{Math.round(vote_average)}</b>/10 <i>({vote_count} Votes)</i></p> 
+  <i title={inList?"Remove from watchlist":"Add to watchlist"} onClick={handleWatchlist} className={`${inList?'ri-bookmark-fill':'ri-bookmark-line'} px-3! py-2! cursor-pointer rounded-full ${inList?'bg-[#ffe100]':'bg-[#838383]'} text-2xl font-light`}></i>
+  </span> 
 <span className='Overview'>
   <h3 className='text-xl font-bold my-1!'>Overview</h3>
   <p className='w-[40vw] font-light'>{overview?overview:"No Overview Available"}</p>
 </span>
 
-<button onClick={playTrailer} disabled={!trailer} className={`disabled:bg-[#323232] rounded-2xl mt-5! px-4! py-4! bg-blue-500 ${trailer?"cursor-pointer":"cursor-not-allowed"}`}>{trailer?<i className="ri-play-large-fill"></i>:<i className="ri-error-warning-fill text-2xl"></i>} {trailer?"PLAY TRAILER":"TRAILER NOT AVAILABLE"}</button>
+<button onClick={playTrailer} disabled={!trailer} className={`disabled:bg-[#323232] rounded-2xl mt-5! px-4! py-4! bg-blue-500 ${trailer?"cursor-pointer":"cursor-not-allowed"}`}>{trailer?<i className="ri-play-large-fill"></i>:<i className="ri-error-warning-line text-2xl"></i>} {trailer?"PLAY TRAILER":"TRAILER NOT AVAILABLE"}</button>
 </div>
            </div>
         </div>

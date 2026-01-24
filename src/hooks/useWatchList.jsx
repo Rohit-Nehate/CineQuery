@@ -1,5 +1,5 @@
 
-import { collection, getDocs } from "firebase/firestore"
+import { collection, deleteDoc, getDocs } from "firebase/firestore"
 import { doc, setDoc, serverTimestamp } from "firebase/firestore"
 import { db } from "../utils/firebase"
 import { auth } from "../utils/firebase"
@@ -56,6 +56,21 @@ export const getWatchlist = async (dispatch) => {
     collection(db, "users", user.uid, "watchlist")
   )
 const data = snap.docs.map(d => d.data())
-console.log(data)
+// console.log(data)
   dispatch(setWatchlist(data))
 }
+
+
+export const clearWatchlistFromDB = async () => {
+  const user = auth.currentUser;
+  if (!user) return;
+
+  const ref = collection(db, "users", user.uid, "watchlist");
+  const snap = await getDocs(ref);
+
+  const deletions = snap.docs.map(d =>
+    deleteDoc(doc(db, "users", user.uid, "watchlist", d.id))
+  );
+
+  await Promise.all(deletions);
+};

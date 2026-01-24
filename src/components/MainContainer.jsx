@@ -26,7 +26,7 @@ const MainContainer = ({ type }) => {
 
   return (
     <div className='relative w-full h-screen overflow-hidden z-0'>
-      <VideoTitle Movie={selectedItem} />
+      <VideoTitle Movie={selectedItem} type={type} />
       <VideoBackground
         type={type}
         movieId={selectedItem.id}

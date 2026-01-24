@@ -16,9 +16,11 @@
     "@tailwindcss/vite": "^4.1.18",
     "@whatisjery/react-fluid-distortion": "^1.6.1",
     "firebase": "^12.7.0",
+    "lucide-react": "^0.563.0",
     "postprocessing": "^6.38.2",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "react-hot-toast": "^2.6.0",
     "react-redux": "^9.2.0",
     "tailwindcss": "^4.1.18"
   },
