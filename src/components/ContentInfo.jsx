@@ -15,6 +15,7 @@ import {
   removeFromWatchlist,
 } from "../hooks/useWatchList";
 import toast, { Toaster } from "react-hot-toast";
+import { motion } from "motion/react";
 
 const ContentInfo = () => {
   const similarContent = useSelector((store) => store.movies?.similarContent);
@@ -108,7 +109,13 @@ const ContentInfo = () => {
           alt=""
         />
         <div className="info w-screen h-screen absolute top-0 left-0  bg-gradient-to-r from-[#010626e7] to-[#01030f4c]">
-          <div className="p-13! text-white flex font-bold bottom-50 absolute gap-15">
+          <motion.div 
+          
+          initial={{opacity: 0, x:-10}}
+          animate={{opacity: 1, x: 0}}
+          transition={{duration: .5, ease: 'easeInOut'}}
+          
+          className="p-13! text-white flex font-bold bottom-50 absolute gap-15">
             <img
               src={BASE_URL + poster_path}
               className="w-70 border border-amber-300 rounded-2xl"
@@ -158,7 +165,7 @@ const ContentInfo = () => {
                 {trailer ? "PLAY TRAILER" : "TRAILER NOT AVAILABLE"}
               </button>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         <div className="-mt-50!">

@@ -10,7 +10,7 @@ import {
 import useMovieSearch from "../hooks/useMovieSearch";
 import MovieCard from "./MovieCard";
 import useGetQueryMovie from "../hooks/useGetQueryMovie";
-
+import { motion } from "motion/react";
 const QuerySearch = () => {
   const dispatch = useDispatch();
   const searchRef = useRef();
@@ -59,7 +59,10 @@ const QuerySearch = () => {
 
       <div className="py-20! px-13! w-full min-h-full! bg-[#212121] text-white">
         <div className="w-full flex justify-center mt-20!">
-          <form
+          <motion.form
+           initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
             className="
               group flex w-[60%] items-center
               bg-[#2a2a2a] rounded-full overflow-hidden
@@ -110,6 +113,7 @@ const QuerySearch = () => {
                 flex items-center gap-2 px-8! py-4!
                 font-semibold text-white
                 bg-gradient-to-r from-blue-600 to-cyan-400
+                    hover:from-[#00418b] hover:to-[#1f6fe5]
               "
             >
               <i
@@ -119,7 +123,7 @@ const QuerySearch = () => {
               />
               SEARCH
             </button>
-          </form>
+          </motion.form>
         </div>
 
         {/* CARDS */}
@@ -137,7 +141,7 @@ const QuerySearch = () => {
             </div>
           ) : (
             moviesResult.map((movie) => (
-              <MovieCard key={movie.id} movie={movie} type="movie" />
+              <MovieCard movie={movie} type="movie" />
             ))
           )}
         </div>

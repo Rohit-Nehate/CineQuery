@@ -5,6 +5,7 @@ import { clearWatchlistFromDB, getWatchlist } from "../hooks/useWatchList";
 import MovieCard from "./MovieCard";
 import toast, { Toaster } from "react-hot-toast";
 import { clearWatchlist } from "../utils/moviesSlice";
+import { motion } from "motion/react";
 
 const Watchlist = () => {
   const dispatch = useDispatch();
@@ -43,7 +44,18 @@ const Watchlist = () => {
         {watchlist && watchlist.length > 0 ? (
           <div className="flex gap-5 flex-wrap mt-8! mb-8!">
             {watchlist.map((movie) => (
-              <MovieCard key={movie.id} movie={movie} type={movie.type} />
+              <motion.dev
+              key={movie.id}
+              initial={{opacity: 0, y:20 }}
+              animate={{opacity:1, y:0}}
+              transition={{duration: .5, ease: 'easeOut'}}
+              
+              
+              >
+
+              
+              <MovieCard  movie={movie} type={movie.type} />
+              </motion.dev>
             ))}
           </div>
         ) : (

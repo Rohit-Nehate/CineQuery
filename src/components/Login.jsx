@@ -13,6 +13,7 @@ import { EffectComposer } from "@react-three/postprocessing";
 import { Canvas, useLoader, useThree } from "@react-three/fiber";
 import { TextureLoader } from "three";
 import { useMemo } from "react";
+import { motion } from "motion/react";
 
 function Background() {
   const texture = useLoader(TextureLoader, "/images/bg-image2.png");
@@ -116,7 +117,13 @@ const Login = () => {
     <div className="login w-screen bg-[url(images/bg-image.png)] h-screen flex justify-center items-center bg-cover bg-center text-black">
       <Header />
 
-      <div className="z-50 login-container backdrop-blur-md  p-10! flex gap-10 flex-col text-white bg-[#000000bf] w-[80%] sm:w-[25%] rounded-lg h-auto">
+      <motion.div
+      
+      initial={{opacity: 0, y:20}}
+      animate={{opacity: 1, y:0}}
+      transition={{duration: .5, ease: 'easeIn'}}
+      
+      className="z-50 login-container backdrop-blur-md  p-10! flex gap-10 flex-col text-white bg-[#000000bf] w-[80%] sm:w-[25%] rounded-lg h-auto">
         <h1 className="text-5xl font-bold">{isLogin ? "Login" : "Register"}</h1>
 
         <div className="login-section rounded-lg text-white">
@@ -172,7 +179,7 @@ const Login = () => {
             </b>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       <Canvas style={{ position: "fixed", inset: 0, zIndex: 10 }}>
         <Background />

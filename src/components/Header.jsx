@@ -8,6 +8,8 @@ import { getWatchlist } from "../hooks/useWatchList";
 import { setWatchlist } from "../utils/moviesSlice";
 import ProfilePopup from "./ProfilePopup";
 import { CloudHail } from "lucide-react";
+import { motion } from "motion/react";
+
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -52,10 +54,17 @@ const Header = () => {
 
   return (
     <>
-      <div className="z-60 absolute bg-gradient-to-b flex p-10! items-center justify-between from-black h-15 w-full top-0 left-0">
+      <motion.div
+      initial={{opacity:0, y: -10}}
+      animate={{opacity: 1, y:0}}
+      transition={{duration: .5, ease: 'easeOut'}}
+      
+      className="z-60 absolute bg-gradient-to-b flex p-10! items-center justify-between from-black h-15 w-full top-0 left-0">
         <div className="flex justify-center items-center gap-10">
+          <Link to='/browse'>
+         
           <img src="/images/logo.png" alt="logo" className="w-60 " />
-
+ </Link>
           {user && (
             <ul className="text-white flex gap-15 text-x">
               <Link to="/browse">
@@ -117,7 +126,7 @@ const Header = () => {
             {showProfile && <ProfilePopup handleLogout={handleLogout} />}
           </div>
         )}
-      </div>
+      </motion.div>
     </>
   );
 };
