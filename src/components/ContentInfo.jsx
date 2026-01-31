@@ -133,7 +133,8 @@ const ContentInfo = () => {
                 <i
                   title={inList ? "Remove from watchlist" : "Add to watchlist"}
                   onClick={handleWatchlist}
-                  className={`${inList ? "ri-bookmark-fill" : "ri-bookmark-line"} px-3! py-2! cursor-pointer rounded-full ${inList ? "bg-[#ffe100]" : "bg-[#838383]"} text-2xl font-light`}
+                  className={`${inList ? "ri-bookmark-fill" : "ri-bookmark-line"} px-3! py-2! cursor-pointer rounded-full ${inList ? "bg-[#ffe100]" : "bg-[#838383]"} text-2xl font-light active:scale-90
+    transition-all `}
                 ></i>
               </span>
               <span className="Overview">
@@ -146,7 +147,8 @@ const ContentInfo = () => {
               <button
                 onClick={playTrailer}
                 disabled={!trailer}
-                className={`disabled:bg-[#323232] rounded-2xl mt-5! px-4! py-4! bg-blue-500 ${trailer ? "cursor-pointer" : "cursor-not-allowed"}`}
+                className={`disabled:bg-[#323232] rounded-2xl mt-5! px-4! py-4! bg-blue-500 ${trailer ? "cursor-pointer" : "cursor-not-allowed"} active:scale-95
+    transition-all duration-200`}
               >
                 {trailer ? (
                   <i className="ri-play-large-fill"></i>

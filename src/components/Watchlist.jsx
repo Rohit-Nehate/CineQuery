@@ -29,7 +29,7 @@ const Watchlist = () => {
 
 
   return (
-    <div className="bg-[#000000] w-full h-full ">
+    <div className="bg-[#212121] w-full min-h-full ">
       <Toaster position="top-right" />
       <Header />
       <div className="pt-30! px-12!">

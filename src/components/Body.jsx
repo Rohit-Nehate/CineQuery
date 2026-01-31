@@ -9,6 +9,7 @@ import MovieCard from "./MovieCard.jsx";
 import ContentInfo from "./ContentInfo.jsx";
 import Watchlist from "./Watchlist.jsx";
 import Movie404 from "./Movie404.jsx";
+import QuerySearch from "./QuerySearch.jsx";
 
 const Body = () => {
   const appRouter = createBrowserRouter([
@@ -42,6 +43,10 @@ const Body = () => {
     {
       path: "moreinfo/:seriesCode",
       element: <ContentInfo />,
+    },
+    {
+      path: "/Search",
+      element: <QuerySearch />,
     },
   ]);
 

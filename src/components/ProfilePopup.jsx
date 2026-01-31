@@ -26,7 +26,7 @@ const ProfilePopup = ({ handleLogout }) => {
       <span>
         <button
           onClick={handleLogout}
-          className="p-1! w-full text-center cursor-pointer hover:bg-blue-700 bg-blue-500 text-[#ffffff] border rounded"
+          className="p-1! w-full text-center cursor-pointer hover:bg-[#6e0000] bg-[#890000] text-[#ffffff] border rounded"
         >
           <i className="ri-logout-box-line text-2xl"></i>
           LogOut
