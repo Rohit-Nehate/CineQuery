@@ -1,4 +1,4 @@
-<![CDATA[<div align="center">
+<div align="center">
 
 # 🎬 CineQuery
 
@@ -260,4 +260,4 @@ This project is open source and available under the [MIT License](LICENSE).
 **Built with ❤️ using React, Firebase, and Google Gemini AI**
 
 </div>
-]]>
+
