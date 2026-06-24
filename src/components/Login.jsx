@@ -123,8 +123,8 @@ const Login = () => {
       animate={{opacity: 1, y:0}}
       transition={{duration: .5, ease: 'easeIn'}}
       
-      className="z-50 login-container backdrop-blur-md  p-10! flex gap-10 flex-col text-white bg-[#000000bf] w-[80%] sm:w-[25%] rounded-lg h-auto">
-        <h1 className="text-5xl font-bold">{isLogin ? "Login" : "Register"}</h1>
+      className="z-50 login-container backdrop-blur-md p-6! md:p-10! flex gap-6 md:gap-10 flex-col text-white bg-[#000000bf] w-[90%] sm:w-[60%] lg:w-[25%] rounded-lg h-auto">
+        <h1 className="text-3xl md:text-5xl font-bold">{isLogin ? "Login" : "Register"}</h1>
 
         <div className="login-section rounded-lg text-white">
           <form className="w-full flex gap-8 flex-col space-y-4">

@@ -11,8 +11,8 @@ const TrailerPlayer = () => {
   };
   if (!trailer || !trailer.key) return null;
   return (
-    <div className="absolute w-screen h-screen bg-[#1901013e]  backdrop-blur-sm flex justify-center items-center inset-0 overflow-hidden z-3000">
-      <div className="w-[80%] h-[80%] rounded-2xl overflow-hidden">
+    <div className="fixed w-screen h-screen bg-[#1901013e] backdrop-blur-sm flex justify-center items-center inset-0 overflow-hidden z-3000">
+      <div className="w-[95%] md:w-[80%] h-[50%] md:h-[80%] rounded-2xl overflow-hidden">
         {trailer ? (
           <iframe
             className="w-full h-full"
@@ -25,9 +25,9 @@ const TrailerPlayer = () => {
 
       <span
         onClick={playTrailer}
-        className="group absolute top-8 right-15 px-2! py-1.5! cursor-pointer border border-white hover:bg-[#ffffff79] hover:border-black rounded-4xl backdrop-blur-sm  bg-[#00000079]"
+        className="group absolute top-4 md:top-8 right-4 md:right-15 px-2! py-1.5! cursor-pointer border border-white hover:bg-[#ffffff79] hover:border-black rounded-4xl backdrop-blur-sm  bg-[#00000079]"
       >
-        <i className="ri-close-line group-hover:text-black text-[#ffff] font-bold text-3xl"></i>
+        <i className="ri-close-line group-hover:text-black text-[#ffff] font-bold text-2xl md:text-3xl"></i>
       </span>
     </div>
   );

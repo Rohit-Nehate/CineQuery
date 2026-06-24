@@ -6,7 +6,7 @@ import MoviesContainer from "./MoviesContainer.jsx";
 const TvShows = () => {
   console.log("loaded tvshows");
   return (
-    <div className=" w-screen h-screen">
+    <div className="w-full min-h-screen">
       <MainContainer type={"show"} />
       <MoviesContainer type={"show"} />
     </div>

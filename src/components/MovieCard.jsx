@@ -8,8 +8,6 @@ import { removeWatchlistItem } from "../utils/moviesSlice";
 
 const MovieCard = ({ movie, type }) => {
   const dispatch = useDispatch();
-  // console.log(movie.movie.poster_path)
-  // console.log(type)
 
   const handleRemoveFromWatchlist = async (e) => {
     e.preventDefault();
@@ -22,8 +20,8 @@ const MovieCard = ({ movie, type }) => {
 
   return (
     <Link to={`/moreinfo/${movie.id}`} state={[movie, type]}>
-      <div className="w-37">
-        <div className="group relative hover:-translate-y-3 transition-transform duration-300 ease-[cubic-bezier(0.19,0.57,0.57,1.10)] shrink-0 m-2 p-2 w-37 cursor-pointer rounded-lg overflow-hidden border-2 border-amber-400 ">
+      <div className="w-28 sm:w-32 md:w-37">
+        <div className="group relative hover:-translate-y-3 transition-transform duration-300 ease-[cubic-bezier(0.19,0.57,0.57,1.10)] shrink-0 m-1 md:m-2 p-1 md:p-2 w-28 sm:w-32 md:w-37 cursor-pointer rounded-lg overflow-hidden border-2 border-amber-400 ">
           <div className=" group-hover:scale-110 transition-transform duration-300 ease-[cubic-bezier(0.19,0.57,0.57,1.10)] ">
             <img
               loading="lazy"
@@ -36,13 +34,13 @@ const MovieCard = ({ movie, type }) => {
             {movie.type && (
               <i
                 onClick={handleRemoveFromWatchlist}
-                className="ri-close-line absolute text-white top-1 right-1 text-2xl font-bold hover:border-[#0000006a] border border-[#ffffff41] rounded-full px-1! hover:bg-[#3c0404dc] bg-[#4d0000]"
+                className="ri-close-line absolute text-white top-1 right-1 text-xl md:text-2xl font-bold hover:border-[#0000006a] border border-[#ffffff41] rounded-full px-1! hover:bg-[#3c0404dc] bg-[#4d0000]"
               ></i>
             )}
-            <i className="ri-arrow-right-up-line absolute bottom-3 right-3 text-2xl font-bold hover:border-[#0000006a] border border-[#510303] rounded hover:bg-[#0000006a] bg-[#ffffff41]"></i>
+            <i className="ri-arrow-right-up-line absolute bottom-2 md:bottom-3 right-2 md:right-3 text-xl md:text-2xl font-bold hover:border-[#0000006a] border border-[#510303] rounded hover:bg-[#0000006a] bg-[#ffffff41]"></i>
           </span>
         </div>
-        <h1 className="text-white">{movie.title || movie.name}</h1>
+        <h1 className="text-white text-xs sm:text-sm md:text-base line-clamp-1">{movie.title || movie.name}</h1>
       </div>
     </Link>
   );

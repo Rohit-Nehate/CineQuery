@@ -57,14 +57,14 @@ const QuerySearch = () => {
         </div>
       )}
 
-      <div className="py-20! px-13! w-full min-h-full! bg-[#212121] text-white">
-        <div className="w-full flex justify-center mt-20!">
+      <div className="py-20! px-4! md:px-13! w-full min-h-full! bg-[#212121] text-white">
+        <div className="w-full flex justify-center mt-10! md:mt-20!">
           <motion.form
            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
             className="
-              group flex w-[60%] items-center
+              group flex w-[95%] md:w-[60%] items-center
               bg-[#2a2a2a] rounded-full overflow-hidden
               transition-all duration-300
               shadow-[0_20px_60px_rgba(0,0,0,0.6)]
@@ -72,7 +72,7 @@ const QuerySearch = () => {
             "
             onSubmit={(e) => e.preventDefault()}
           >
-            <label className="cursor-pointer ml-4!">
+            <label className="cursor-pointer ml-2! md:ml-4!">
               <input
                 checked={queryEnabled}
                 onChange={() => dispatch(toggleQueryEnabled())}
@@ -81,23 +81,23 @@ const QuerySearch = () => {
               />
               <div
                 className="
-                px-3! py-2! rounded-full flex items-center gap-2
+                px-2! md:px-3! py-2! rounded-full flex items-center gap-1 md:gap-2
                 text-xs font-semibold bg-neutral-800 border border-white/30
                 peer-checked:bg-gradient-to-r
                 peer-checked:from-[#0400ff]
                 peer-checked:to-[#4ce3f7]
               "
               >
-                <i className="ri-bard-line text-lg"></i>
-                Query
+                <i className="ri-bard-line text-base md:text-lg"></i>
+                <span className="hidden sm:inline">Query</span>
               </div>
             </label>
 
             <input
               ref={searchRef}
               className="
-                w-full px-6! py-4!
-                text-base text-white bg-transparent
+                w-full px-3! md:px-6! py-3! md:py-4!
+                text-sm md:text-base text-white bg-transparent
                 focus:outline-none placeholder:text-neutral-400
               "
               placeholder={
@@ -110,8 +110,8 @@ const QuerySearch = () => {
             <button
               onClick={handleResultMovies}
               className="
-                flex items-center gap-2 px-8! py-4!
-                font-semibold text-white
+                flex items-center gap-1 md:gap-2 px-4! md:px-8! py-3! md:py-4!
+                font-semibold text-white text-sm md:text-base
                 bg-gradient-to-r from-blue-600 to-cyan-400
                     hover:from-[#00418b] hover:to-[#1f6fe5]
               "
@@ -119,23 +119,23 @@ const QuerySearch = () => {
               <i
                 className={`${
                   queryEnabled ? "ri-search-ai-2-line" : "ri-search-line"
-                } text-2xl`}
+                } text-xl md:text-2xl`}
               />
-              SEARCH
+              <span className="hidden sm:inline">SEARCH</span>
             </button>
           </motion.form>
         </div>
 
         {/* CARDS */}
-        <div className="mt-10! w-full flex flex-wrap gap-8">
+        <div className="mt-10! w-full flex flex-wrap gap-4 md:gap-8 justify-center md:justify-start">
           {!moviesResult ? (
-            <div className="w-full flex justify-center mt-30!">
-              <img src="/images/thinking.gif" alt="" />
+            <div className="w-full flex justify-center mt-16! md:mt-30!">
+              <img src="/images/thinking.gif" alt="" className="w-48 md:w-auto" />
             </div>
           ) : moviesResult.length === 0 ? (
-            <div className="w-full flex flex-col items-center justify-center mt-30!">
-              <i className="ri-search-line text-6xl mb-4 opacity-60"></i>
-              <h2 className="text-lg font-semibold text-gray-300">
+            <div className="w-full flex flex-col items-center justify-center mt-16! md:mt-30!">
+              <i className="ri-search-line text-5xl md:text-6xl mb-4 opacity-60"></i>
+              <h2 className="text-base md:text-lg font-semibold text-gray-300">
                 No results found
               </h2>
             </div>

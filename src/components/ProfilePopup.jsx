@@ -10,7 +10,7 @@ const ProfilePopup = ({ handleLogout }) => {
   };
 
   return (
-    <div className=" gap-5 z-9999  p-6! flex flex-col bg-[#1a1a1a80] backdrop-blur-md absolute top-15 right-2 w-40 rounded shadow-lg">
+    <div className=" gap-5 z-9999  p-6! flex flex-col bg-[#1a1a1a80] backdrop-blur-md absolute top-15 right-2 w-36 md:w-40 rounded shadow-lg">
       <Link to="/browse/watchlist">
         <span>
           <button

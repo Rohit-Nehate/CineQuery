@@ -7,7 +7,7 @@ const MoviesContainer = ({ type }) => {
 
   if (!movies) return null;
   return (
-    <div className="relative z-20 -mt-55!">
+    <div className="relative z-20 -mt-20! md:-mt-55!">
       <MoviesList
         type={type}
         title={type == "movie" ? "Now Playing" : "Airing Today"}
